@@ -1,0 +1,115 @@
+{
+  "title": "Mappa Concettuale Principale",
+  "description": "Benvenuto nella mappa concettuale. Seleziona un argomento per iniziare.",
+  "children": {
+    "matematica": {
+      "title": "Matematica",
+      "description": "Argomenti di matematica",
+      "children": {
+        "algebra": {
+          "title": "Algebra",
+          "description": "Studio delle strutture algebriche",
+          "children": {
+            "equazioni_lineari": {
+              "title": "Equazioni Lineari",
+              "description": "Equazioni di primo grado",
+              "message": "📚 Richiesta aiuto per Equazioni Lineari\n\nHo bisogno di assistenza con le equazioni lineari. Puoi spiegarmi come risolvere equazioni del tipo ax + b = 0?"
+            },
+            "equazioni_quadratiche": {
+              "title": "Equazioni Quadratiche",
+              "description": "Equazioni di secondo grado",
+              "message": "📚 Richiesta aiuto per Equazioni Quadratiche\n\nVorrei capire meglio le equazioni quadratiche. Come si usa la formula risolutiva ax² + bx + c = 0?"
+            }
+          }
+        },
+        "geometria": {
+          "title": "Geometria",
+          "description": "Studio delle forme e dello spazio",
+          "children": {
+            "teorema_pitagora": {
+              "title": "Teorema di Pitagora",
+              "description": "Relazione nei triangoli rettangoli",
+              "message": "📚 Richiesta aiuto per Teorema di Pitagora\n\nHo difficoltà con il teorema di Pitagora. Puoi mostrarmi alcuni esempi pratici di applicazione?"
+            },
+            "area_perimetro": {
+              "title": "Area e Perimetro",
+              "description": "Calcolo di aree e perimetri",
+              "message": "📚 Richiesta aiuto per Area e Perimetro\n\nNon riesco a calcolare correttamente area e perimetro delle figure geometriche. Mi serve una spiegazione."
+            }
+          }
+        }
+      }
+    },
+    "fisica": {
+      "title": "Fisica",
+      "description": "Argomenti di fisica",
+      "children": {
+        "meccanica": {
+          "title": "Meccanica",
+          "description": "Studio del movimento",
+          "children": {
+            "leggi_newton": {
+              "title": "Leggi di Newton",
+              "description": "Le tre leggi fondamentali della dinamica",
+              "message": "📚 Richiesta aiuto per Leggi di Newton\n\nHo bisogno di chiarimenti sulle tre leggi di Newton. Puoi spiegarmele con esempi pratici?"
+            },
+            "energia_cinetica": {
+              "title": "Energia Cinetica",
+              "description": "Energia dovuta al movimento",
+              "message": "📚 Richiesta aiuto per Energia Cinetica\n\nNon capisco bene il concetto di energia cinetica. Come si calcola e quali sono le sue applicazioni?"
+            }
+          }
+        },
+        "termodinamica": {
+          "title": "Termodinamica",
+          "description": "Studio del calore e dell'energia termica",
+          "children": {
+            "primo_principio": {
+              "title": "Primo Principio della Termodinamica",
+              "description": "Conservazione dell'energia",
+              "message": "📚 Richiesta aiuto per Primo Principio Termodinamica\n\nIl primo principio della termodinamica mi confonde. Puoi spiegarlo in modo semplice?"
+            }
+          }
+        }
+      }
+    },
+    "informatica": {
+      "title": "Informatica",
+      "description": "Argomenti di informatica e programmazione",
+      "children": {
+        "algoritmi": {
+          "title": "Algoritmi",
+          "description": "Studio degli algoritmi",
+          "children": {
+            "ordinamento": {
+              "title": "Algoritmi di Ordinamento",
+              "description": "Bubble sort, Quick sort, Merge sort",
+              "message": "📚 Richiesta aiuto per Algoritmi di Ordinamento\n\nVorrei capire meglio gli algoritmi di ordinamento. Quali sono le differenze tra Bubble Sort, Quick Sort e Merge Sort?"
+            },
+            "ricerca": {
+              "title": "Algoritmi di Ricerca",
+              "description": "Ricerca lineare e binaria",
+              "message": "📚 Richiesta aiuto per Algoritmi di Ricerca\n\nHo bisogno di chiarimenti sulla ricerca binaria. Come funziona e quando è meglio usarla rispetto alla ricerca lineare?"
+            }
+          }
+        },
+        "strutture_dati": {
+          "title": "Strutture Dati",
+          "description": "Liste, alberi, grafi, etc.",
+          "children": {
+            "liste": {
+              "title": "Liste",
+              "description": "Liste concatenate e array",
+              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            },
+            "alberi": {
+              "title": "Alberi",
+              "description": "Alberi binari, AVL, B-tree",
+              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            }
+          }
+        }
+      }
+    }
+  }
+}
