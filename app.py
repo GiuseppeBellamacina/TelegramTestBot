@@ -1,11 +1,9 @@
 import json
-import os
 from time import sleep
 from typing import List, Tuple
 
 import requests
 import streamlit as st
-from dotenv import find_dotenv, load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
@@ -14,7 +12,15 @@ from pydantic import BaseModel
 # CONFIGURAZIONE E MODELLI
 # ============================================================================
 
-load_dotenv(find_dotenv())
+def get_secret(key: str, default: str = "") -> str:
+    """Recupera un secret da st.secrets con fallback a variabile d'ambiente"""
+    try:
+        return st.secrets.get(key, default)
+    except (FileNotFoundError, KeyError):
+        # Fallback a variabili d'ambiente se secrets.toml non esiste
+        import os
+        return os.getenv(key, default)
+
 
 class MessageResponse(BaseModel):
     """Risposta del modello OpenAI con messaggi suddivisi"""
@@ -327,10 +333,10 @@ def main():
         st.error("⚠️ File 'concept_map.json' non trovato. Assicurati che esista nella directory del progetto.")
         st.stop()
 
-    # Variabili d'ambiente
-    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
-    TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
-    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+    # Variabili di configurazione
+    TELEGRAM_BOT_TOKEN = get_secret("TELEGRAM_BOT_TOKEN")
+    TELEGRAM_CHAT_ID = get_secret("TELEGRAM_CHAT_ID")
+    OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
 
     # Header
     col_title, col_ai_button = st.columns([5, 1])

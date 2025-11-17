@@ -42,21 +42,23 @@ pip install -r requirements.txt
 2. Avvia una conversazione
 3. Il bot ti mostrerà il tuo **Chat ID** (es: `123456789`)
 
-#### c) Configura le variabili d'ambiente
+#### c) Configura i secrets
 
-Crea un file `.env` nella root del progetto (copia da `.env.example`):
+Crea un file `.streamlit/secrets.toml` nella root del progetto:
 
 ```bash
-cp .env.example .env
+mkdir .streamlit
 ```
 
-Modifica `.env` inserendo i tuoi valori:
+Crea il file `.streamlit/secrets.toml` con i tuoi valori:
 
+```toml
+TELEGRAM_BOT_TOKEN = "il_tuo_token_del_bot"
+TELEGRAM_CHAT_ID = "il_tuo_chat_id"
+OPENAI_API_KEY = "sk-proj-la_tua_api_key_openai"
 ```
-TELEGRAM_BOT_TOKEN=il_tuo_token_del_bot
-TELEGRAM_CHAT_ID=il_tuo_chat_id
-OPENAI_API_KEY=sk-proj-la_tua_api_key_openai
-```
+
+> **Nota**: Il file funziona anche con variabili d'ambiente (`.env`) come fallback.
 
 ### 4. Configura OpenAI (opzionale)
 
