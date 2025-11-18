@@ -40,13 +40,14 @@ conciso e professionale. Se la domanda riguarda argomenti di studio, fornisci sp
 dettagliate ma comprensibili. Non scrivere formule in markdown. Se il messaggio di risposta è
 troppo lungo, suddividilo in più messaggi di massimo 120 caratteri ciascuno. Non fare messaggi eccessivamente corti se
 decidi di suddividerlo e cerca di non fare più di 5 messaggi in totale. Se puoi mandare un solo messaggio fallo.
+Il topic principale delle domande riguarda la Topologia Generale, tu devi rispondere comunque a tutto.
 
 Domanda: {question}
 
 Risposta:"""
     )
     
-    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
+    llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0.7)
     return prompt_template | llm.with_structured_output(MessageResponse)
 
 
