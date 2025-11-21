@@ -2,84 +2,233 @@
   "title": "Mappa Concettuale Principale",
   "description": "Benvenuto nella mappa concettuale. Seleziona un argomento per iniziare.",
   "children": {
-    "matematica": {
-      "title": "Matematica",
-      "description": "Argomenti di matematica",
+    "Spazi Topologici": {
+      "title": "Spazi Topologici",
+      "description": "Spazi Topologici",
       "children": {
-        "algebra": {
-          "title": "Algebra",
-          "description": "Studio delle strutture algebriche",
+        "Introduzione": {
+          "title": "Introduzione",
+          "description": "Introduzione",
           "children": {
-            "equazioni_lineari": {
-              "title": "Equazioni Lineari",
-              "description": "Equazioni di primo grado",
-              "message": "📚 Richiesta aiuto per Equazioni Lineari\n\nHo bisogno di assistenza con le equazioni lineari. Puoi spiegarmi come risolvere equazioni del tipo ax + b = 0?"
+            "Spazio Topologico": {
+              "title": "Spazio Topologico",
+              "description": "Spazio Topologico",
+              "message": "Uno Sp. Top. è una coppia (X, theta) dove X è un insieme e theta è una collezione di sottoinsiemi di X che soddisfa le seguenti proprietà:\n\n1. Vuoto e X app. a theta\n2. A1. A2 app. a theta => inter. app. a theta\n3. {Ai | i in I} app. a theta => ∪ Ai app. a theta"
             },
-            "equazioni_quadratiche": {
-              "title": "Equazioni Quadratiche",
-              "description": "Equazioni di secondo grado",
-              "message": "📚 Richiesta aiuto per Equazioni Quadratiche\n\nVorrei capire meglio le equazioni quadratiche. Come si usa la formula risolutiva ax² + bx + c = 0?"
+            "Theta": {
+              "title": "Theta",
+              "description": "Theta",
+              "message": "Theta si dice topologia e i suoi insiemi si dicono insiemi aperti."
+            },
+            "Topologia Indiscreta": {
+              "title": "Topologia Indiscreta",
+              "description": "Topologia Indiscreta",
+              "message": "La topologia indiscreta su un insieme X è la topologia più piccola definibile, costituita solo dagli insiemi vuoto e X stesso. In simboli: θ = {∅, X}."
+            },
+            "Topologia Discreta": {
+              "title": "Topologia Discreta",
+              "description": "Topologia Discreta",
+              "message": "La topologia discreta su un insieme X è la topologia più grande definibile, costituita da tutti i sottoinsiemi aperti di X."
+            },
+            "Topologia Cofinita": {
+              "title": "Topologia Cofinita",
+              "description": "Topologia Cofinita",
+              "message": "Nell'insieme X, definiamo A contenuto in X aperto se A è uguale al vuoto o se X-A è insieme finito."
+            },
+            "Intorno di un punto": {
+              "title": "Intorno di un punto",
+              "description": "Intorno di un punto",
+              "message": "In uno spazio topologico (X, θ), un insieme U contenuto in X è intorno di un punto x che app. a X se esiste un aperto A app. a theta tale che x app. a A contenuto in U."
+            },
+            "Sottoinsieme Chiuso": {
+              "title": "Sottoinsieme Chiuso",
+              "description": "Sottoinsieme Chiuso",
+              "message": "Un sottoinsieme C si dice chiuso se il suo complementare è aperto, cioè se X-C app. a θ. La famiglia C degli insiemi chiusi soddisfa\n\n1. vuoto e X app. a C\n2. C1, C2 app. a C => C1 U C2 app. a C\n3. {Ci | i in I} app. a C => ∩ Ci app. a C"
             }
           }
         },
-        "geometria": {
-          "title": "Geometria",
-          "description": "Studio delle forme e dello spazio",
+        "Chiusura di un insieme": {
+          "title": "Chiusura di un insieme",
+          "description": "Chiusura di un insieme",
           "children": {
-            "teorema_pitagora": {
-              "title": "Teorema di Pitagora",
-              "description": "Relazione nei triangoli rettangoli",
-              "message": "📚 Richiesta aiuto per Teorema di Pitagora\n\nHo difficoltà con il teorema di Pitagora. Puoi mostrarmi alcuni esempi pratici di applicazione?"
+            "Insiemi tutti chiusi": {
+              "title": "Insiemi tutti chiusi",
+              "description": "Insiemi tutti chiusi",
+              "message": "Sia X sp. top. e A contenuto in X, Ca è l'insieme di tutti i chiusi di X che contengono A."
             },
-            "area_perimetro": {
-              "title": "Area e Perimetro",
-              "description": "Calcolo di aree e perimetri",
-              "message": "📚 Richiesta aiuto per Area e Perimetro\n\nNon riesco a calcolare correttamente area e perimetro delle figure geometriche. Mi serve una spiegazione."
+            "Chiusura": {
+              "title": "Chiusura",
+              "description": "Chiusura di un insieme",
+              "message": "La chiusura di A è l'intersezione della famiglia Ca. La chiusura è insieme chiuso ed è il più piccolo insieme chiuso contenente A. A chiuso <=> A = A̅."
+            },
+            "Punto di Accumulazione": {
+              "title": "Punto di Accumulazione",
+              "description": "Punto di Accumulazione",
+              "message": "X sp. top. A contenuto in X. Un punto x app. a X si dice punto di accumulazione di A se ogni intorno di x inserseca A in almeno un punto diverso da x. L'insieme di tutti i punti di acc. si dice derivato di A."
+            },
+            "Frontiera": {
+              "title": "Frontiera",
+              "description": "Frontiera",
+              "message": "x app. X è di frontiera per A se ogni intorno di x interseca sia A che X-A"
+            },
+            "Interno di A": {
+              "title": "Interno di A",
+              "description": "Interno di A",
+              "message": "A sottoins. di X si dice interno di A l'unione degli aperti contenuti in A, esso è il più grande aperto contenuto in A. A è aperto <=> A = int(A)."
+            }
+          }
+        },
+        "Base e Sottobase": {
+          "title": "Base e Sottobase",
+          "description": "Base e sottobase",
+          "children": {
+            "Base": {
+              "title": "Base",
+              "description": "Def di Base",
+              "message": "Un sottoinsieme B di theta è una base se per ogni A che app. a theta e ogni x app. a A esiste B app. a B tale che x app. a B contenuto in A."
+            },
+            "Proprietà della Base": {
+              "title": "Proprietà della Base",
+              "description": "Proprietà della Base",
+              "message": "Per ogni B1, B2 che app. a B e ogni x app. a B1 ∩ B2 esiste B3 app. a B tale che x app. a B3 contenuto in B1 ∩ B2.\nPer ogni x app. a X esiste B app. a B tale che x app. a B."
+            },
+            "Secondo assioma di numerabilità": {
+              "title": "Secondo assioma di numerabilità",
+              "description": "Secondo assioma di numerabilità",
+              "message": "Uno spazio topologico soddisfa il secondo assioma di numerabilità se possiede una base numerabile."
+            },
+            "Sistema Fondamentale di Intorni per X": {
+              "title": "Sistema Fondamentale di Intorni per X",
+              "description": "Sistema Fondamentale di Intorni per X",
+              "message": "X sp. top. e x app. a X una famiglia di intorni V di x si def. sist. fond. di intorni per x se per ogni intorno U di x esiste V app. a V tale che V contenuto in U."
+            },
+            "Primo assioma di numerabilità": {
+              "title": "Primo assioma di numerabilità",
+              "description": "Primo assioma di numerabilità",
+              "message": "Uno spazio topologico soddisfa il primo assioma di numerabilità se ogni punto possiede un sistema fondamentale di intorni numerabile."
+            },
+            "Sottobase": {
+              "title": "Sottobase",
+              "description": "Def di Sottobase",
+              "message": "Un sottoinsieme S di θ si dice sottobase se per ogni A che app. a theta e ogni x app. a A esistono S1, S2, ..., Sn app. a S tali che x app. all'intersezione delle Si contenuti in A."
+            }
+          }
+        },
+        "Costruzione di una Topologia data una Base": {
+          "title": "Costruzione di una Topologia data una Base",
+          "description": "Costruzione di una Topologia data una Base",
+          "children": {
+            "Definizione 1 (Sorgenfrei)": {
+              "title": "Definizione 1 (Sorgenfrei)",
+              "description": "Definizione 1 (Sorgenfrei)",
+              "message": "X insieme. Supponiamo sia assegnata una famiglia B di sottoinsiemi di X sodd, le propr. delle basi. Definiamo theta su X topologia ponendo A app. a theta <=> esiste B0 contenuto in B tale che A è l'unione di B0. L'insieme A app. a theta se per ogni x app. a A esiste B app. a B tale che x app. a B contenuto in A."
+            },
+            "Sottoinsieme Denso": {
+              "title": "Sottoinsieme Denso",
+              "description": "Sottoinsieme Denso",
+              "message": "Sottoinsieme A contenuto in X si dice denso in X se la chiusura di A è uguale a X. A denso in X <=> ogni aperto non vuoto di X interseca A. Gli sp. top. che possiedono un sottoinsieme denso numerabile si dicono separabili."
+            }
+          }
+        },
+        "Confronto di Topologie": {
+          "title": "Confronto di Topologie",
+          "description": "Confronto di Topologie",
+          "children": {
+            "Topologia più Fine": {
+              "title": "Topologia più Fine",
+              "description": "Topologia più Fine",
+              "message": "Date theta1 e theta2 topologie su X, si dice che theta1 è più fine di theta2 se ogni aperto di theta2 è anche aperto di theta1, cioè se theta2 è contenuta in theta1."
+            }
+          }
+        },
+        "Topologia indotta da una Metrica": {
+          "title": "Topologia indotta da una Metrica",
+          "description": "Topologia indotta da una Metrica",
+          "children": {
+            "Metrica": {
+              "title": "Metrica",
+              "description": "Metrica",
+              "message": "Una metrica d su un insieme X è una funzione d: X × X → R tale che per ogni x, y, z app. a X vale:\n\n1. d(x, y) ≥ 0 e d(x, y) = 0 <=> x = y\n2. d(x, y) = d(y, x)\n3. d(x, z) ≤ d(x, y) + d(y, z)"
+            },
+            "Metrizzabile": {
+              "title": "Metrizzabile",
+              "description": "Metrizzabile",
+              "message": "Uno sp. top. (X, theta) si dice metrizzabile se esiste una metrica d su X tale che la topologia indotta da d coincide con theta."
+            }
+          }
+        },
+        "Funzioni continue": {
+          "title": "Funzioni continue",
+          "description": "Funzioni continue",
+          "children": {
+            "Funzione Continua": {
+              "title": "Funzione Continua",
+              "description": "Funzione Continua",
+              "message": "Siano (X, theta) e (Y, tau) spazi topologici. Una funzione f: X → Y si dice continua se per ogni aperto U di tau f^(-1)(U) app. a theta, cioè se l'immagine inversa di ogni aperto è un aperto."
+            },
+            "Continua nel punto x": {
+              "title": "Continua nel punto x",
+              "description": "Continua nel punto x",
+              "message": "Siano X, Y sp. top. Una funzione f: X → Y si dice continua nel punto x app. a X se per ogni intorno U di f(x) esiste intorno V di x tale che f(V) è contenuto in U."
+            },
+            "Funzioni Chiuse e Aperte": {
+              "title": "Funzioni Chiuse e Aperte",
+              "description": "Funzioni Chiuse e Aperte",
+              "message": "Una funzione f: X → Y si dice funzione chiusa (aperta) se l'immagine di ogni insieme chiuso (aperto) di X è un insieme chiuso (aperto) di Y."
+            },
+            "Omeomorfismo": {
+              "title": "Omeomorfismo",
+              "description": "Omeomorfismo",
+              "message": "Una funzione f: X → Y si dice omeomorfismo se è biunivoca, continua e la sua inversa f^(-1) è continua. La composizione di omeomorfismi è un omeomorfismo. X omeomorfo a Y se esiste un omeomorfismo f tra i due spazi. L'omeomorfismo è una relazione di equivalenza"
+            }
+          }
+        },
+        "Sottospazi": {
+          "title": "Sottospazi",
+          "description": "Sottospazi",
+          "children": {
+            "Sottospazio": {
+              "title": "Sottospazio",
+              "description": "Sottospazio",
+              "message": "X sp. top., Y sottoinsieme di X. Sia A insieme contenuto in Y aperto <=> esiste aperto U di X tale che A = U ∩ Y. Tale top. definita su Y si dice topologia indotta da X e Y si dice sottospazio di X."
+            },
+            "Sottospazio Chiuso e Aperto": {
+              "title": "Sottospazio Chiuso e Aperto",
+              "description": "Sottospazio Chiuso e Aperto",
+              "message": "Se Y sottospazio di X e Y è chiuso (aperto) in X, si dice che Y è un sottospazio chiuso (aperto) di X."
+            },
+            "Funzioni Immersione": {
+              "title": "Funzioni Immersione",
+              "description": "Funzioni Immersione",
+              "message": "Sia X sp. top. e Y contenuto in X. Se Y ha la topologia indotta da X, allora la funzione immersione i: Y → X è continua."
+            },
+            "Restrizione di una Funzione": {
+              "title": "Restrizione di una Funzione",
+              "description": "Restrizione di una Funzione",
+              "message": "Sia f: X → Y una funzione e Z sottoinsieme di X. La restrizione di f all'insieme Z, f|Z: Z → Y definita da f|Z = f composto con iZ."
             }
           }
         }
       }
     },
-    "fisica": {
-      "title": "Fisica",
-      "description": "Argomenti di fisica",
+    "Assiomi di separazione": {
+      "title": "Assiomi di separazione",
+      "description": "Assiomi di separazione",
       "children": {
-        "meccanica": {
-          "title": "Meccanica",
-          "description": "Studio del movimento",
-          "children": {
-            "leggi_newton": {
-              "title": "Leggi di Newton",
-              "description": "Le tre leggi fondamentali della dinamica",
-              "message": "📚 Richiesta aiuto per Leggi di Newton\n\nHo bisogno di chiarimenti sulle tre leggi di Newton. Puoi spiegarmele con esempi pratici?"
-            },
-            "energia_cinetica": {
-              "title": "Energia Cinetica",
-              "description": "Energia dovuta al movimento",
-              "message": "📚 Richiesta aiuto per Energia Cinetica\n\nNon capisco bene il concetto di energia cinetica. Come si calcola e quali sono le sue applicazioni?"
-            }
-          }
-        },
-        "termodinamica": {
-          "title": "Termodinamica",
-          "description": "Studio del calore e dell'energia termica",
-          "children": {
-            "primo_principio": {
-              "title": "Primo Principio della Termodinamica",
-              "description": "Conservazione dell'energia",
-              "message": "📚 Richiesta aiuto per Primo Principio Termodinamica\n\nIl primo principio della termodinamica mi confonde. Puoi spiegarlo in modo semplice?"
-            }
-          }
+        "leggi_newton": {
+          "title": "Leggi di Newton",
+          "description": "Le tre leggi fondamentali della dinamica",
+          "message": "📚 Richiesta aiuto per Leggi di Newton\n\nHo bisogno di chiarimenti sulle tre leggi di Newton. Puoi spiegarmele con esempi pratici?"
         }
       }
     },
-    "informatica": {
-      "title": "Informatica",
-      "description": "Argomenti di informatica e programmazione",
+    "Prodotti e Quozienti": {
+      "title": "Prodotti e Quozienti",
+      "description": "Prodotti e quozienti",
       "children": {
-        "algoritmi": {
-          "title": "Algoritmi",
-          "description": "Studio degli algoritmi",
+        "Reticolo delle Topologie su un Insieme": {
+          "title": "Reticolo delle Topologie su un Insieme",
+          "description": "Reticolo delle Topologie su un Insieme",
           "children": {
             "ordinamento": {
               "title": "Algoritmi di Ordinamento",
@@ -93,9 +242,187 @@
             }
           }
         },
-        "strutture_dati": {
-          "title": "Strutture Dati",
-          "description": "Liste, alberi, grafi, etc.",
+        "Topologie definite da Famiglie di Funzioni": {
+          "title": "Topologie definite da Famiglie di Funzioni",
+          "description": "Topologie definite da Famiglie di Funzioni",
+          "children": {
+            "liste": {
+              "title": "Liste",
+              "description": "Liste concatenate e array",
+              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            },
+            "alberi": {
+              "title": "Alberi",
+              "description": "Alberi binari, AVL, B-tree",
+              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            }
+          }
+        },
+        "Prodotto di Spazi Topologici": {
+          "title": "Prodotto di Spazi Topologici",
+          "description": "Prodotto di Spazi Topologici",
+          "children": {
+            "liste": {
+              "title": "Liste",
+              "description": "Liste concatenate e array",
+              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            },
+            "alberi": {
+              "title": "Alberi",
+              "description": "Alberi binari, AVL, B-tree",
+              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            }
+          }
+        },
+        "Funzioni Quoziente": {
+          "title": "Funzioni Quoziente",
+          "description": "Funzioni Quoziente",
+          "children": {
+            "liste": {
+              "title": "Liste",
+              "description": "Liste concatenate e array",
+              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            },
+            "alberi": {
+              "title": "Alberi",
+              "description": "Alberi binari, AVL, B-tree",
+              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            }
+          }
+        },
+        "Spazi Quoziente": {
+          "title": "Spazi Quoziente",
+          "description": "Spazi Quoziente",
+          "children": {
+            "liste": {
+              "title": "Liste",
+              "description": "Liste concatenate e array",
+              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            },
+            "alberi": {
+              "title": "Alberi",
+              "description": "Alberi binari, AVL, B-tree",
+              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            }
+          }
+        }
+      }
+    },
+    "Spazi Connessi": {
+      "title": "Spazi Connessi",
+      "description": "Spazi connessi",
+      "children": {
+        "Introduzione Connessione": {
+          "title": "Introduzione Connessione",
+          "description": "Introduzione Connessione",
+          "children": {
+            "ordinamento": {
+              "title": "Algoritmi di Ordinamento",
+              "description": "Bubble sort, Quick sort, Merge sort",
+              "message": "📚 Richiesta aiuto per Algoritmi di Ordinamento\n\nVorrei capire meglio gli algoritmi di ordinamento. Quali sono le differenze tra Bubble Sort, Quick Sort e Merge Sort?"
+            },
+            "ricerca": {
+              "title": "Algoritmi di Ricerca",
+              "description": "Ricerca lineare e binaria",
+              "message": "📚 Richiesta aiuto per Algoritmi di Ricerca\n\nHo bisogno di chiarimenti sulla ricerca binaria. Come funziona e quando è meglio usarla rispetto alla ricerca lineare?"
+            }
+          }
+        },
+        "Connessione per Archi": {
+          "title": "Connessione per Archi",
+          "description": "Connessione per Archi",
+          "children": {
+            "liste": {
+              "title": "Liste",
+              "description": "Liste concatenate e array",
+              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            },
+            "alberi": {
+              "title": "Alberi",
+              "description": "Alberi binari, AVL, B-tree",
+              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            }
+          }
+        }
+      }
+    },
+    "Spazi Compatti": {
+      "title": "Spazi Compatti",
+      "description": "Spazi compatti",
+      "children": {
+        "Introduzione di Compatti": {
+          "title": "Introduzione di Compatti",
+          "description": "Introduzione di Compatti",
+          "children": {
+            "ordinamento": {
+              "title": "Algoritmi di Ordinamento",
+              "description": "Bubble sort, Quick sort, Merge sort",
+              "message": "📚 Richiesta aiuto per Algoritmi di Ordinamento\n\nVorrei capire meglio gli algoritmi di ordinamento. Quali sono le differenze tra Bubble Sort, Quick Sort e Merge Sort?"
+            },
+            "ricerca": {
+              "title": "Algoritmi di Ricerca",
+              "description": "Ricerca lineare e binaria",
+              "message": "📚 Richiesta aiuto per Algoritmi di Ricerca\n\nHo bisogno di chiarimenti sulla ricerca binaria. Come funziona e quando è meglio usarla rispetto alla ricerca lineare?"
+            }
+          }
+        },
+        "Localmente Compatti": {
+          "title": "Localmente Compatti",
+          "description": "Localmente Compatti",
+          "children": {
+            "liste": {
+              "title": "Liste",
+              "description": "Liste concatenate e array",
+              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            },
+            "alberi": {
+              "title": "Alberi",
+              "description": "Alberi binari, AVL, B-tree",
+              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            }
+          }
+        },
+        "Pseudo Compatti": {
+          "title": "Pseudo Compatti",
+          "description": "Pseudo Compatti",
+          "children": {
+            "liste": {
+              "title": "Liste",
+              "description": "Liste concatenate e array",
+              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            },
+            "alberi": {
+              "title": "Alberi",
+              "description": "Alberi binari, AVL, B-tree",
+              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            }
+          }
+        }
+      }
+    },
+    "Spazi Metrici Completi e Compatti": {
+      "title": "Spazi Metrici Completi e Compatti",
+      "description": "Spazi metrici completi e compatti",
+      "children": {
+        "Spazio Metrico": {
+          "title": "Spazio Metrico",
+          "description": "Spazio Metrico",
+          "children": {
+            "ordinamento": {
+              "title": "Algoritmi di Ordinamento",
+              "description": "Bubble sort, Quick sort, Merge sort",
+              "message": "📚 Richiesta aiuto per Algoritmi di Ordinamento\n\nVorrei capire meglio gli algoritmi di ordinamento. Quali sono le differenze tra Bubble Sort, Quick Sort e Merge Sort?"
+            },
+            "ricerca": {
+              "title": "Algoritmi di Ricerca",
+              "description": "Ricerca lineare e binaria",
+              "message": "📚 Richiesta aiuto per Algoritmi di Ricerca\n\nHo bisogno di chiarimenti sulla ricerca binaria. Come funziona e quando è meglio usarla rispetto alla ricerca lineare?"
+            }
+          }
+        },
+        "Teorema di Baire e Corollari": {
+          "title": "Teorema di Baire e Corollari",
+          "description": "Teorema di Baire e Corollari",
           "children": {
             "liste": {
               "title": "Liste",
