@@ -81,14 +81,6 @@ def send_telegram_message(
         response.raise_for_status()
         return True, "Messaggio inviato con successo!"
     except Exception as e:
-        print(f"Errore nell'invio del messaggio Telegram: {str(e)}")
-        print(
-            f"Response content: {response.content if 'response' in locals() else 'N/A'}"
-        )
-        print(f"Payload: {payload}")
-        print(f"URL: {url}")
-        print(f"Bot Token: {bot_token[:5]}... Chat ID: {chat_id}")
-        print(f"Message: {message}")
         return False, f"Errore nell'invio: {str(e)}"
 
 
