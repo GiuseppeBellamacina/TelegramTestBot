@@ -1,3 +1,4 @@
+import html
 import json
 from time import sleep
 from typing import List, Tuple
@@ -12,6 +13,7 @@ from pydantic import BaseModel
 # CONFIGURAZIONE E MODELLI
 # ============================================================================
 
+
 def get_secret(key: str, default: str = "") -> str:
     """Recupera un secret da st.secrets con fallback a variabile d'ambiente"""
     try:
@@ -19,17 +21,20 @@ def get_secret(key: str, default: str = "") -> str:
     except (FileNotFoundError, KeyError):
         # Fallback a variabili d'ambiente se secrets.toml non esiste
         import os
+
         return os.getenv(key, default)
 
 
 class MessageResponse(BaseModel):
     """Risposta del modello OpenAI con messaggi suddivisi"""
+
     messages: List[str]
 
 
 # ============================================================================
 # CACHE E RISORSE
 # ============================================================================
+
 
 @st.cache_resource
 def get_llm_chain():
@@ -46,7 +51,7 @@ Domanda: {question}
 
 Risposta:"""
     )
-    
+
     llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0.7)
     return prompt_template | llm.with_structured_output(MessageResponse)
 
@@ -62,19 +67,34 @@ def load_concept_map(json_path: str):
 # FUNZIONI TELEGRAM
 # ============================================================================
 
-def send_telegram_message(bot_token: str, chat_id: str, message: str) -> Tuple[bool, str]:
+
+def send_telegram_message(
+    bot_token: str, chat_id: str, message: str
+) -> Tuple[bool, str]:
     """Invia un messaggio al bot Telegram"""
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    payload = {"chat_id": chat_id, "text": message, "parse_mode": "HTML"}
+    # Escape HTML special characters to prevent parsing errors
+    escaped_message = html.escape(message)
+    payload = {"chat_id": chat_id, "text": escaped_message, "parse_mode": "HTML"}
     try:
         response = requests.post(url, json=payload)
         response.raise_for_status()
         return True, "Messaggio inviato con successo!"
     except Exception as e:
+        print(f"Errore nell'invio del messaggio Telegram: {str(e)}")
+        print(
+            f"Response content: {response.content if 'response' in locals() else 'N/A'}"
+        )
+        print(f"Payload: {payload}")
+        print(f"URL: {url}")
+        print(f"Bot Token: {bot_token[:5]}... Chat ID: {chat_id}")
+        print(f"Message: {message}")
         return False, f"Errore nell'invio: {str(e)}"
 
 
-def send_multiple_telegram_messages(bot_token: str, chat_id: str, messages: List[str]) -> Tuple[bool, str]:
+def send_multiple_telegram_messages(
+    bot_token: str, chat_id: str, messages: List[str]
+) -> Tuple[bool, str]:
     """Invia più messaggi in sequenza al bot Telegram"""
     failed_messages = []
 
@@ -95,6 +115,7 @@ def send_multiple_telegram_messages(bot_token: str, chat_id: str, messages: List
 # FUNZIONI OPENAI
 # ============================================================================
 
+
 def ask_openai(question: str) -> Tuple[bool, List[str] | str]:
     """Interroga OpenAI con una domanda e ritorna la risposta"""
     try:
@@ -108,6 +129,7 @@ def ask_openai(question: str) -> Tuple[bool, List[str] | str]:
 # ============================================================================
 # FUNZIONI NAVIGAZIONE MAPPA CONCETTUALE
 # ============================================================================
+
 
 def is_leaf(node) -> bool:
     """Verifica se un nodo è una foglia (non ha sotto-argomenti)"""
@@ -162,12 +184,17 @@ def count_leaves(node) -> int:
 # UI COMPONENTS
 # ============================================================================
 
-def render_ai_modal(openai_api_key: str, telegram_bot_token: str, telegram_chat_id: str):
+
+def render_ai_modal(
+    openai_api_key: str, telegram_bot_token: str, telegram_chat_id: str
+):
     """Renderizza il modal per le domande all'AI"""
     st.markdown("### 🤖 Chiedi all'Intelligenza Artificiale")
 
     if not openai_api_key:
-        st.warning("⚠️ Configura OPENAI_API_KEY nelle variabili d'ambiente per usare questa funzionalità.")
+        st.warning(
+            "⚠️ Configura OPENAI_API_KEY nelle variabili d'ambiente per usare questa funzionalità."
+        )
         st.info("Aggiungi al file `.env`:\n```\nOPENAI_API_KEY=sk-...\n```")
         return
 
@@ -180,7 +207,9 @@ def render_ai_modal(openai_api_key: str, telegram_bot_token: str, telegram_chat_
 
         col1, col2, _ = st.columns([1, 1, 3])
         with col1:
-            submit = st.form_submit_button("📤 Invia", type="primary", use_container_width=True)
+            submit = st.form_submit_button(
+                "📤 Invia", type="primary", use_container_width=True
+            )
         with col2:
             cancel = st.form_submit_button("❌ Annulla", use_container_width=True)
 
@@ -203,14 +232,20 @@ def render_ai_modal(openai_api_key: str, telegram_bot_token: str, telegram_chat_
                     st.info(ai_response)
 
                 # Invia a Telegram se configurato
-                if telegram_bot_token and telegram_chat_id and isinstance(ai_response, list):
+                if (
+                    telegram_bot_token
+                    and telegram_chat_id
+                    and isinstance(ai_response, list)
+                ):
                     messages_to_send = [f"❓ Domanda: {user_question}"]
 
                     if len(ai_response) == 1:
                         messages_to_send.append(f"🤖 Risposta AI:\n{ai_response[0]}")
                     else:
                         for i, msg in enumerate(ai_response, 1):
-                            messages_to_send.append(f"🤖 Risposta AI (parte {i}/{len(ai_response)}):\n{msg}")
+                            messages_to_send.append(
+                                f"🤖 Risposta AI (parte {i}/{len(ai_response)}):\n{msg}"
+                            )
 
                     telegram_success, telegram_msg = send_multiple_telegram_messages(
                         telegram_bot_token, telegram_chat_id, messages_to_send
@@ -243,11 +278,19 @@ def render_leaf_node(node, telegram_bot_token: str, telegram_chat_id: str):
     st.code(message, language=None)
 
     if not telegram_bot_token or not telegram_chat_id:
-        st.warning("⚠️ Configura TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID nelle variabili d'ambiente per abilitare l'invio.")
-        st.info("Puoi creare un file `.env` con:\n```\nTELEGRAM_BOT_TOKEN=your_bot_token\nTELEGRAM_CHAT_ID=your_chat_id\n```")
+        st.warning(
+            "⚠️ Configura TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID nelle variabili d'ambiente per abilitare l'invio."
+        )
+        st.info(
+            "Puoi creare un file `.env` con:\n```\nTELEGRAM_BOT_TOKEN=your_bot_token\nTELEGRAM_CHAT_ID=your_chat_id\n```"
+        )
     else:
-        if st.button("📤 Invia messaggio a Telegram", type="primary", use_container_width=True):
-            success, result_message = send_telegram_message(telegram_bot_token, telegram_chat_id, message)
+        if st.button(
+            "📤 Invia messaggio a Telegram", type="primary", use_container_width=True
+        ):
+            success, result_message = send_telegram_message(
+                telegram_bot_token, telegram_chat_id, message
+            )
             if success:
                 st.success(result_message)
                 st.balloons()
@@ -268,9 +311,13 @@ def render_category_node(children):
         for j, (key, value) in enumerate(child_items[i : i + cols_per_row]):
             with cols[j]:
                 icon = "📄" if is_leaf(value) else "📁"
-                display_name = value.get("title", key) if isinstance(value, dict) else key
+                display_name = (
+                    value.get("title", key) if isinstance(value, dict) else key
+                )
 
-                if st.button(f"{icon} {display_name}", key=f"btn_{key}", use_container_width=True):
+                if st.button(
+                    f"{icon} {display_name}", key=f"btn_{key}", use_container_width=True
+                ):
                     st.session_state.current_path.append(key)
                     st.session_state.message_sent = False
                     st.rerun()
@@ -310,13 +357,12 @@ def render_sidebar(concept_map):
 # APPLICAZIONE PRINCIPALE
 # ============================================================================
 
+
 def main():
     """Funzione principale dell'applicazione"""
     # Configurazione pagina
     st.set_page_config(
-        page_title="Mappa Concettuale Navigabile", 
-        page_icon="🗺️", 
-        layout="wide"
+        page_title="Mappa Concettuale Navigabile", page_icon="🗺️", layout="wide"
     )
 
     # Inizializza stato sessione
@@ -331,7 +377,9 @@ def main():
     try:
         concept_map = load_concept_map("concept_map.json")
     except FileNotFoundError:
-        st.error("⚠️ File 'concept_map.json' non trovato. Assicurati che esista nella directory del progetto.")
+        st.error(
+            "⚠️ File 'concept_map.json' non trovato. Assicurati che esista nella directory del progetto."
+        )
         st.stop()
 
     # Variabili di configurazione

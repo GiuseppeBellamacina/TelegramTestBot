@@ -59,7 +59,7 @@
             "Chiusura": {
               "title": "Chiusura",
               "description": "Chiusura di un insieme",
-              "message": "La chiusura di A è l'intersezione della famiglia Ca. La chiusura è insieme chiuso ed è il più piccolo insieme chiuso contenente A. A chiuso <=> A = A̅."
+              "message": "La chiusura di A è l'intersezione della famiglia Ca. La chiusura è insieme chiuso ed è il più piccolo insieme chiuso contenente A. A chiuso <=> A = chiusura."
             },
             "Punto di Accumulazione": {
               "title": "Punto di Accumulazione",
@@ -230,15 +230,15 @@
           "title": "Reticolo delle Topologie su un Insieme",
           "description": "Reticolo delle Topologie su un Insieme",
           "children": {
-            "ordinamento": {
-              "title": "Algoritmi di Ordinamento",
-              "description": "Bubble sort, Quick sort, Merge sort",
-              "message": "📚 Richiesta aiuto per Algoritmi di Ordinamento\n\nVorrei capire meglio gli algoritmi di ordinamento. Quali sono le differenze tra Bubble Sort, Quick Sort e Merge Sort?"
+            "TOP(X)": {
+              "title": "TOP(X)",
+              "description": "TOP(X)",
+              "message": "X insieme è denoto con TOP(X) = l'insieme di tutte le topologie definibili su X.\nDate theta1 e theta2 app. a TOP(X) abbiamo theta1 più fine di theta2 se theta2 è contenuto in theta1, ciò conduce ad un ordinam. parz. su TOP(X)"
             },
-            "ricerca": {
-              "title": "Algoritmi di Ricerca",
-              "description": "Ricerca lineare e binaria",
-              "message": "📚 Richiesta aiuto per Algoritmi di Ricerca\n\nHo bisogno di chiarimenti sulla ricerca binaria. Come funziona e quando è meglio usarla rispetto alla ricerca lineare?"
+            "Parzialmente Ordinato": {
+              "title": "Parzialmente Ordinato",
+              "description": "Parzialmente Ordinato",
+              "message": "In TOP(X) poiniamo theta1 più fine di theta2 se theta2 è contenuto in theta1. (TOP(X), ≤) è parz. ordinato => in (TOP(X), ≤) esiste la nozione di estremo superiore ed inferiore. Quindi (TOP(X), ≤) è un reticolo completo."
             }
           }
         },
@@ -246,15 +246,15 @@
           "title": "Topologie definite da Famiglie di Funzioni",
           "description": "Topologie definite da Famiglie di Funzioni",
           "children": {
-            "liste": {
-              "title": "Liste",
-              "description": "Liste concatenate e array",
-              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            "Immagini Inverse": {
+              "title": "Immagini Inverse",
+              "description": "Immagini Inverse",
+              "message": "X insieme, (Y, theta) sp. top., f: X -> Y. La top. meno fine su X che rende f continua è theta_f = {f^(-1)(A) | A app. a theta}. theta_f è topologia.\nL'immagine inversa di un aperto di Y è un aperto in theta_f => f: (X, theta_f) -> (Y, theta_f) è continua. theta_f è detta immagine inversa di theta tramite f."
             },
-            "alberi": {
-              "title": "Alberi",
-              "description": "Alberi binari, AVL, B-tree",
-              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            "Topologia Generata dalla Famiglia di Funzioni": {
+              "title": "Topologia Generata dalla Famiglia di Funzioni",
+              "description": "Topologia Generata dalla Famiglia di Funzioni",
+              "message": "X insieme, {Ys, theta_s} famiglia di sp. top. e fs: X -> Ys famiglia di funzioni. La topologia tau meno fine definibile su X per la quale ogni funz. fs è continua si dice topologia generata dalla famiglia di funzioni {fs} => tau = sup{theta_fs}."
             }
           }
         },
@@ -262,15 +262,20 @@
           "title": "Prodotto di Spazi Topologici",
           "description": "Prodotto di Spazi Topologici",
           "children": {
-            "liste": {
-              "title": "Liste",
-              "description": "Liste concatenate e array",
-              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            "Topologia Prodotto": {
+              "title": "Topologia Prodotto",
+              "description": "Topologia Prodotto",
+              "message": "X e Y insiemi, pi: X × Y → X e q: X × Y → Y proiezioni canoniche definite da pi(X, Y) = x e q(X, Y) = y.\nX e Y sp. top. si definisce top. prodotto sull'insieme X × Y la topologia meno fine che rende le proiezioni canoniche pi e q continue."
             },
-            "alberi": {
-              "title": "Alberi",
-              "description": "Alberi binari, AVL, B-tree",
-              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            "Grafico": {
+              "title": "Grafico",
+              "description": "Grafico",
+              "message": "Data la funzione f: X → Y, si definisce grafico di f l'insieme Gf = {(x, f(x)) | x app. a X} contenuto in X × Y."
+            },
+            "Potenza del Continuo": {
+              "title": "Potenza del Continuo",
+              "description": "Potenza del Continuo",
+              "message": "A insieme ha la potenza del continuo se esiste f: A -> B biunivoca."
             }
           }
         },
@@ -278,33 +283,22 @@
           "title": "Funzioni Quoziente",
           "description": "Funzioni Quoziente",
           "children": {
-            "liste": {
-              "title": "Liste",
-              "description": "Liste concatenate e array",
-              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            "Topologia Quoziente": {
+              "title": "Topologia Quoziente",
+              "description": "Topologia Quoziente",
+              "message": "(X, theta) sp. top., Y insieme, pi: X -> Y funzione. Si dice top. quoziente indotta da pi su Y la più fine top. definibile su Y che rende continua pi e si indica con theta^pi"
             },
-            "alberi": {
-              "title": "Alberi",
-              "description": "Alberi binari, AVL, B-tree",
-              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            "Quoziente": {
+              "title": "Quoziente",
+              "description": "Quoziente",
+              "message": "(X, theta) e (Y, tau) sono sp. top. pi: X -> Y si dice quoziente se tau è uguale a theta^pi"
             }
           }
         },
         "Spazi Quoziente": {
           "title": "Spazi Quoziente",
           "description": "Spazi Quoziente",
-          "children": {
-            "liste": {
-              "title": "Liste",
-              "description": "Liste concatenate e array",
-              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
-            },
-            "alberi": {
-              "title": "Alberi",
-              "description": "Alberi binari, AVL, B-tree",
-              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
-            }
-          }
+          "message": "X sp. top. R relazione di equiv. Si dice spazio quoziente X/R l'insieme delle classi di equiv. rispetto ad una relazione di equv. R su X"
         }
       }
     },
@@ -316,15 +310,45 @@
           "title": "Introduzione Connessione",
           "description": "Introduzione Connessione",
           "children": {
-            "ordinamento": {
-              "title": "Algoritmi di Ordinamento",
-              "description": "Bubble sort, Quick sort, Merge sort",
-              "message": "📚 Richiesta aiuto per Algoritmi di Ordinamento\n\nVorrei capire meglio gli algoritmi di ordinamento. Quali sono le differenze tra Bubble Sort, Quick Sort e Merge Sort?"
+            "Connesso 1": {
+              "title": "Connesso 1",
+              "description": "Connesso 1",
+              "message": "X sp. top. si dice connesso se NON esistono aperti (chiusi) NON vuoti e disgiunti U e V (F e G) tali che X = U ∪ V (X = F ∪ G)."
             },
-            "ricerca": {
-              "title": "Algoritmi di Ricerca",
-              "description": "Ricerca lineare e binaria",
-              "message": "📚 Richiesta aiuto per Algoritmi di Ricerca\n\nHo bisogno di chiarimenti sulla ricerca binaria. Come funziona e quando è meglio usarla rispetto alla ricerca lineare?"
+            "Connesso 2": {
+              "title": "Connesso 2",
+              "description": "Connesso 2",
+              "message": "X si dice connesso <=> gli unici insiemi simultaneamente aperti e chiusi sono il vuoto e X (indiscreta e cofinita SI, discreta e Sorgenfrei NO)."
+            },
+            "Retta Reale Connessa": {
+              "title": "Retta Reale Connessa",
+              "description": "Retta Reale Connessa",
+              "message": "S sottoinsieme retta reale R e x=sup(S) => x app. chiusura di S.\nSottoinsieme J retta reale è un intervallo <=> per ogni x, y app. a J si ha che l'intervallo [x, y] contenuto in J.\nSottoinsiemi connessi retta reale con top. euclidea sono tutti e soli gli intervalli. Quindi retta reale R è sp. connesso"
+            },
+            "Sottospazio Connesso": {
+              "title": "Sottospazio Connesso",
+              "description": "Sottospazio Connesso",
+              "message": "Un sottospazio Y si dice connesso se NON può essere diviso in due aperti disgiunti"
+            },
+            "Componente Connessa di X": {
+              "title": "Componente Connessa di X",
+              "description": "Componente Connessa di X",
+              "message": "X sp. top. e x app. X. C= famiglia di tutti i sottospazi connessi di X che contengono il punto x. Cx = ∪C è sottospazio connesso. Cx è il più grande sottospazio connesso di X contenente il punto x. Cx si dice comp. conn. di X."
+            },
+            "Relazione Componenti Connesse": {
+              "title": "Relazione Componenti Connesse",
+              "description": "Relazione Componenti Connesse",
+              "message": "R relazione definita dichiarando xRy <=> esiste sottospazio connesso che contiene x e y. R rel. di equiv. Le classi di equiv. sono le comp. connesse di X. X sp. conn. <=> ha una sola comp. conn."
+            },
+            "Totalmente Sconnesso": {
+              "title": "Totalmente Sconnesso",
+              "description": "Totalmente Sconnesso",
+              "message": "X top. si dice tot. sconnesso se Cs è uguale a {x}, cioè le comp. connesse sono singoletti (X T1 discreta retta razionale sono tot. sconnessi)."
+            },
+            "Localmente Connesso": {
+              "title": "Localmente Connesso",
+              "description": "Localmente Connesso",
+              "message": "X sp. top. si dice localmente connesso se ogni punto possiede un sistema fondamentale di intorni connessi. Uno spazio può essere connesso ma non localmente connesso."
             }
           }
         },
@@ -332,15 +356,20 @@
           "title": "Connessione per Archi",
           "description": "Connessione per Archi",
           "children": {
-            "liste": {
-              "title": "Liste",
-              "description": "Liste concatenate e array",
-              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            "Arco": {
+              "title": "Arco",
+              "description": "Arco",
+              "message": "X sp. top., x, y app. a X. Si dice arco di estremi x e y una funzione f: I -> X continua tale che: f(0) = x e f(1) = y."
             },
-            "alberi": {
-              "title": "Alberi",
-              "description": "Alberi binari, AVL, B-tree",
-              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            "Connesso per Archi": {
+              "title": "Connesso per Archi",
+              "description": "Connesso per Archi",
+              "message": "X sp. top. si dice connesso per archi se per ogni x, y app. a X esiste un arco di estremi x e y."
+            },
+            "Localmente Connesso per Archi": {
+              "title": "Localmente Connesso per Archi",
+              "description": "Localmente Connesso per Archi",
+              "message": "X sp. top. si dice localmente connesso per archi se ogni punto possiede un sistema fondamentale di intorni connessi per archi."
             }
           }
         }
@@ -354,15 +383,20 @@
           "title": "Introduzione di Compatti",
           "description": "Introduzione di Compatti",
           "children": {
-            "ordinamento": {
-              "title": "Algoritmi di Ordinamento",
-              "description": "Bubble sort, Quick sort, Merge sort",
-              "message": "📚 Richiesta aiuto per Algoritmi di Ordinamento\n\nVorrei capire meglio gli algoritmi di ordinamento. Quali sono le differenze tra Bubble Sort, Quick Sort e Merge Sort?"
+            "Ricoprimento di X": {
+              "title": "Ricoprimento di X",
+              "description": "Ricoprimento di X",
+              "message": "X insieme, A={As} famiglia di sottoinsiemi si dice ricoprimento di X se X = U A. Se A è formato da insiemi aperti, allora si dice ricoprimento aperto."
             },
-            "ricerca": {
-              "title": "Algoritmi di Ricerca",
-              "description": "Ricerca lineare e binaria",
-              "message": "📚 Richiesta aiuto per Algoritmi di Ricerca\n\nHo bisogno di chiarimenti sulla ricerca binaria. Come funziona e quando è meglio usarla rispetto alla ricerca lineare?"
+            "Compatto": {
+              "title": "Compatto",
+              "description": "Compatto",
+              "message": "X sp. top. si dice compatto se ogni ricoprimento aperto U possiede un sottoricoprimento finito (top. discreta cofinita sono compatti, R Rquadro Sorgenfrei NO)."
+            },
+            "Proprità Intersezione Finita": {
+              "title": "Proprità Intersezione Finita",
+              "description": "Proprità Intersezione Finita",
+              "message": "F famiglia di sottoinsiemi di X si dice che la proprietà dell'intersezione finita se ogni famiglia finita di F ha intersezione non vuota."
             }
           }
         },
@@ -370,33 +404,32 @@
           "title": "Localmente Compatti",
           "description": "Localmente Compatti",
           "children": {
-            "liste": {
-              "title": "Liste",
-              "description": "Liste concatenate e array",
-              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
+            "Localmente Compatto": {
+              "title": "Localmente Compatto",
+              "description": "Localmente Compatto",
+              "message": "X sp. top. si dice localmente compatto se ogni punto possiede un intorno compatto (retta reale, spazio discreto)"
             },
-            "alberi": {
-              "title": "Alberi",
-              "description": "Alberi binari, AVL, B-tree",
-              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
+            "Compattificazione": {
+              "title": "Compattificazione",
+              "description": "Compattificazione",
+              "message": "Uno sp. Z è compattificazione di X se: Z è compatto di H, X omeomorfo ad un sottospazio denso di X"
+            },
+            "Relazione di Equivalenza": {
+              "title": "Relazione di Equivalenza",
+              "description": "Relazione di Equivalenza",
+              "message": "Una relazione R è di equivalenza se rif. sim. trans.\nLe rel. di equiv. partiscono lo spazio in classi di equiv."
+            },
+            "Proiezione Canonica": {
+              "title": "Proiezione Canonica",
+              "description": "Proiezione Canonica",
+              "message": "La proiezione canonica π: X → X/R è una mappatura da uno spazio X ad uno spazio quoziente X/R. Se R è chiuso, allora la proiezione è chiusa."
             }
           }
         },
         "Pseudo Compatti": {
           "title": "Pseudo Compatti",
           "description": "Pseudo Compatti",
-          "children": {
-            "liste": {
-              "title": "Liste",
-              "description": "Liste concatenate e array",
-              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
-            },
-            "alberi": {
-              "title": "Alberi",
-              "description": "Alberi binari, AVL, B-tree",
-              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
-            }
-          }
+          "message": "Uno sp. top. si dice pseudo compatto se ogni funzione continua f: X → R è limitata."
         }
       }
     },
@@ -404,37 +437,20 @@
       "title": "Spazi Metrici Completi e Compatti",
       "description": "Spazi metrici completi e compatti",
       "children": {
-        "Spazio Metrico": {
-          "title": "Spazio Metrico",
-          "description": "Spazio Metrico",
-          "children": {
-            "ordinamento": {
-              "title": "Algoritmi di Ordinamento",
-              "description": "Bubble sort, Quick sort, Merge sort",
-              "message": "📚 Richiesta aiuto per Algoritmi di Ordinamento\n\nVorrei capire meglio gli algoritmi di ordinamento. Quali sono le differenze tra Bubble Sort, Quick Sort e Merge Sort?"
-            },
-            "ricerca": {
-              "title": "Algoritmi di Ricerca",
-              "description": "Ricerca lineare e binaria",
-              "message": "📚 Richiesta aiuto per Algoritmi di Ricerca\n\nHo bisogno di chiarimenti sulla ricerca binaria. Come funziona e quando è meglio usarla rispetto alla ricerca lineare?"
-            }
-          }
+        "Completo": {
+          "title": "Completo",
+          "description": "Completo",
+          "message": "Uno sp. metrico si dice completo se ogni successione di Cauchy è convergente."
         },
-        "Teorema di Baire e Corollari": {
-          "title": "Teorema di Baire e Corollari",
-          "description": "Teorema di Baire e Corollari",
-          "children": {
-            "liste": {
-              "title": "Liste",
-              "description": "Liste concatenate e array",
-              "message": "📚 Richiesta aiuto per Liste\n\nNon ho chiara la differenza tra liste concatenate e array. Quando dovrei usare una rispetto all'altra?"
-            },
-            "alberi": {
-              "title": "Alberi",
-              "description": "Alberi binari, AVL, B-tree",
-              "message": "📚 Richiesta aiuto per Alberi\n\nGli alberi binari di ricerca mi creano difficoltà. Puoi spiegarmi le operazioni di inserimento e cancellazione?"
-            }
-          }
+        "Successione di Cauchy": {
+          "title": "Successione di Cauchy",
+          "description": "Successione di Cauchy",
+          "message": "Una successione è di Cauchy se per ogni ε > 0 esiste n segnato che app. N tale che per ogni m, n > n segnato si ha d(xm, xn) < ε."
+        },
+        "Totalmente Limitato": {
+          "title": "Totalmente Limitato",
+          "description": "Totalmente Limitato",
+          "message": "Uno sp. metrico si dice tot. lim. se per ogni ε > 0 esiste un numero finito di punti x1...xn app. X tale che X si può ricoprire con un numero finito di palle di raggio ε."
         }
       }
     }
