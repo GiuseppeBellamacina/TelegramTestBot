@@ -41,11 +41,10 @@ class MessageResponse(BaseModel):
 def get_llm_chain():
     """Crea e cache la chain LLM per evitare ricaricamenti"""
     prompt_template = PromptTemplate.from_template(
-        """Sei un assistente esperto e disponibile. Rispondi alla seguente domanda in modo chiaro, 
-conciso e professionale. Se la domanda riguarda argomenti di studio, fornisci spiegazioni 
+        """Sei un assistente esperto e disponibile. Rispondi alla seguente domanda in modo chiaro come se fossi un professore universitario di Topologia Generale. Se la domanda riguarda argomenti di studio, fornisci spiegazioni 
 dettagliate ma comprensibili. Non scrivere formule in markdown. Se il messaggio di risposta è
 troppo lungo, suddividilo in più messaggi di massimo 120 caratteri ciascuno. Non fare messaggi eccessivamente corti se
-decidi di suddividerlo e cerca di non fare più di 5 messaggi in totale. Se puoi mandare un solo messaggio fallo.
+decidi di suddividerlo e cerca di non fare più di 5 messaggi in totale (da 1 a 5 messaggi massimo). Se puoi mandare un solo messaggio fallo.
 Il topic principale delle domande riguarda la Topologia Generale, tu devi rispondere comunque a tutto.
 
 Domanda: {question}
@@ -53,7 +52,7 @@ Domanda: {question}
 Risposta:"""
     )
 
-    llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0.5)
+    llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0.2)
     return prompt_template | llm.with_structured_output(MessageResponse)
 
 
