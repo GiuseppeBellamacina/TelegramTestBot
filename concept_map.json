@@ -215,10 +215,80 @@
       "title": "Assiomi di separazione",
       "description": "Assiomi di separazione",
       "children": {
-        "leggi_newton": {
-          "title": "Leggi di Newton",
-          "description": "Le tre leggi fondamentali della dinamica",
-          "message": "📚 Richiesta aiuto per Leggi di Newton\n\nHo bisogno di chiarimenti sulle tre leggi di Newton. Puoi spiegarmele con esempi pratici?"
+        "T0": {
+          "title": "T0",
+          "description": "T0",
+          "message": "Uno sp. X soddisfa l'ass. di sep. T0 se per ogni coppia di punti distinti x,y che app. a X esiste un aperto che contiene uno solo dei due punti."
+        },
+        "T1": {
+          "title": "T1",
+          "description": "T1",
+          "message": "Uno sp. X soddisfa l'ass. di sep. T1 se per ogni coppia di punti x,y esiste un aperto U contenuto in X tale che X app. U e Y NON app. U e un aperto V contenuto in X tale che Y app. V e X NON app. V."
+        },
+        "T0 NON => T1": {
+          "title": "T0 NON => T1",
+          "description": "T0 NON => T1",
+          "message": "L'insieme {a, b} con top. definita dagli aperti {∅, {a}, {a, b}} è T0 ma non T1."
+        },
+        "T2 Hausdorff": {
+          "title": "T2 Hausdorff",
+          "description": "T2 Hausdorff",
+          "message": "Uno spazio X si dice che soddisfa l'ass. di sep. T2 (Hausdorff) se per ogni coppia di punti distinti x,y in X esistono due aperti U e V tali che x appartiene a U, y appartiene a V e U ∩ V = ∅."
+        },
+        "T1 NON => T2": {
+          "title": "T1 NON => T2",
+          "description": "T1 NON => T2",
+          "message": "X insieme finito con top. cofinita. Esso è T1 perché ogni singoletto è chiuso, ma non è T2 in quanto ogni coppia di aperti non vuoti ha intersezione non vuota.\nInfatti se U e V ap. NON vuoti allora esistono ins. fin. F e G tali che U = X-F e V = X-G.\nU intersec. V = vuoto => sostituendo => X-(F U G) = vuoto => X = F U G ASSURDO X inf."
+        },
+        "T3 regolare": {
+          "title": "T3 regolare",
+          "description": "T3 regolare",
+          "message": "Uno sp. X si dice T3 o regolare se è T1 e se per ogni chiuso F ed ogni punto x NON app. a F esistono due aperti disgiunti U e V tali che X app. U e F contenuto in V."
+        },
+        "T2 NON => T3": {
+          "title": "T2 NON => T3",
+          "description": "T2 NON => T3",
+          "message": "R insieme reale, Z sottoinsieme e Z = {1/n | n app. a N}, theta top. su R che ha come base B = insieme ]a,b[ - A tale che a,b app. a R e a contenuto in Z.\ntheta più fine della top. euclidea implica (R, theta) è T2 ma non T3 infatti Z chiuso in (R, theta)."
+        },
+        "T3 mezzi Tychonoff": {
+          "title": "T3 mezzi Tychonoff",
+          "description": "T3 mezzi Tychonoff",
+          "message": "Uno sp. X si dice di Tychonoff o completamente regolare o T3 mezzi se è T1 e per ogni chiuso F contenuto in X ed ogni punto x NON app. a F esiste f: X -> I continua tale che f(x) = {0} e f(F) = {1}."
+        },
+        "T4 normale": {
+          "title": "T4 normale",
+          "description": "T4 normale",
+          "message": "Uno spazio X si dice normale o T4 se è T1 e per ogni coppia di chiusi disgiunti F,G in X esistono due aperti U e V tali che F contenuto in U, G contenuto in V e U ∩ V = ∅."
+        },
+        "T5 Ereditariamente Normale": {
+          "title": "T5 Ereditariamente Normale",
+          "description": "T5 Ereditariamente Normale",
+          "message": "Uno sp. top. X si dice ereditariamente normale o T5 se ogni sottospazio di X soddisfa l'assioma T4 (è normale)."
+        },
+        "G_delta e F_sigma": {
+          "title": "G_delta e F_sigma",
+          "description": "G_delta e F_sigma",
+          "message": "A sottoinsieme di X si dice essere G_delta se A è intersez. di una famiglia numerabile di aperti di X.\nSi dice essere un F_sigma se è unione di una famiglia numerabile di chiusi di X.\nA è G_delta <=> X-A è F_sigma."
+        },
+        "0-insieme": {
+          "title": "0-insieme",
+          "description": "0-insieme",
+          "message": "A sottoinsieme di X tale che A = f^(-1)({0}) per qualche f: X -> I continua si dice 0-insieme di X."
+        },
+        "T6 perfettamente normale": {
+          "title": "T6 perfettamente normale",
+          "description": "T6 perfettamente normale",
+          "message": "Uno sp. top. X si dice perfettamente normale o T6 se è T4 (normale) e ogni sottoinsieme chuso di X è G_delta."
+        },
+        "T6 => T5": {
+          "title": "T6 => T5",
+          "description": "T6 => T5",
+          "message": "T6 => T5"
+        },
+        "T5 NON => T6": {
+          "title": "T5 NON => T6",
+          "description": "T5 NON => T6",
+          "message": "D NON numerabile, p pt. e p non app. D. X = D ∪ {p} definisco top. con a contenuto in X ap. se p NON app. a A o X-A finito. X è T1 => T4.\nF e G chiusi di X => F formato da pt. isolati => aperto => basta prendere come coppia di aperti F e X-F.\nUn sottosp. di X Y o ha top. discr. o è T1, ma in entrambi i casi Y è T4 => X è T5. X NON T6 perché {p} NON G_delta.\nInfatti se Un aperto e p contenuto in Un => X-Un finito => non si ha {p} = ∩ Un. Perché si avrebbe X-{p} = ∪ (X-Un) impossibile: primo membro NON numerabile, secondo numerabile."
         }
       }
     },
