@@ -133,13 +133,7 @@
         "Confronto di Topologie": {
           "title": "Confronto di Topologie",
           "description": "Confronto di Topologie",
-          "children": {
-            "Topologia più Fine": {
-              "title": "Topologia più Fine",
-              "description": "Topologia più Fine",
-              "message": "Date theta1 e theta2 topologie su X, si dice che theta1 è più fine di theta2 se ogni aperto di theta2 è anche aperto di theta1, cioè se theta2 è contenuta in theta1."
-            }
-          }
+          "message": "Date theta1 e theta2 topologie su X, si dice che theta1 è più fine di theta2 se ogni aperto di theta2 è anche aperto di theta1, cioè se theta2 è contenuta in theta1."
         },
         "Topologia indotta da una Metrica": {
           "title": "Topologia indotta da una Metrica",
@@ -149,6 +143,11 @@
               "title": "Metrica",
               "description": "Metrica",
               "message": "Una metrica d su un insieme X è una funzione d: X × X → R tale che per ogni x, y, z app. a X vale:\n\n1. d(x, y) ≥ 0 e d(x, y) = 0 <=> x = y\n2. d(x, y) = d(y, x)\n3. d(x, z) ≤ d(x, y) + d(y, z)"
+            },
+            "Disco (Palla)": {
+              "title": "Disco (Palla)",
+              "description": "Disco (Palla)",
+              "message": "Nello sp. metrico (X,d) denoto con S(x, r) il disco di centro x e raggio r.\nIn tale spazio definisco la topologia (theta, d) ponendo U che app. a (theta, d) <=> per ogni x che app. a U esiste r > 0 tale che il disco S è contenuto in U.\nLa top. (theta, d) si dice indotta dalla metrica d."
             },
             "Metrizzabile": {
               "title": "Metrizzabile",
@@ -170,6 +169,11 @@
               "title": "Continua nel punto x",
               "description": "Continua nel punto x",
               "message": "Siano X, Y sp. top. Una funzione f: X → Y si dice continua nel punto x app. a X se per ogni intorno U di f(x) esiste intorno V di x tale che f(V) è contenuto in U."
+            },
+            "Successione Uniformemente Convergente": {
+              "title": "Successione Uniformemente Convergente",
+              "description": "Successione Uniformemente Convergente",
+              "message": "{fn} converge unif. a f se per ogni epsilon > 0 esiste n segnato tale che per ogni n > n segnato e per ogni x che app. a X, il |F(x) - Fn(x)| < epsilon"
             },
             "Funzioni Chiuse e Aperte": {
               "title": "Funzioni Chiuse e Aperte",
@@ -265,6 +269,11 @@
           "description": "T5 Ereditariamente Normale",
           "message": "Uno sp. top. X si dice ereditariamente normale o T5 se ogni sottospazio di X soddisfa l'assioma T4 (è normale)."
         },
+        "T4 NON => T5": {
+          "title": "T4 NON => T5",
+          "description": "T4 NON => T5",
+          "message": "X è un T3 mezzi ma non T4, Y compattificazione di X e Y è T4 ma X NON è un T5."
+        },
         "G_delta e F_sigma": {
           "title": "G_delta e F_sigma",
           "description": "G_delta e F_sigma",
@@ -309,6 +318,16 @@
               "title": "Parzialmente Ordinato",
               "description": "Parzialmente Ordinato",
               "message": "In TOP(X) poiniamo theta1 più fine di theta2 se theta2 è contenuto in theta1. (TOP(X), ≤) è parz. ordinato => in (TOP(X), ≤) esiste la nozione di estremo superiore ed inferiore. Quindi (TOP(X), ≤) è un reticolo completo."
+            },
+            "Estremo Inferiore": {
+              "title": "Estremo Inferiore",
+              "description": "Estremo Inferiore",
+              "message": "Se {theta_s} contenuto in TOP(X) allora la top. theta inf. = intersezione di theta_s è estremo inf. di {theta_s}.\ntheta inf. topologia, theta inf. contenuto in theta_s implica theta inf. <= theta_s.\ntheta top. su X tale che theta <= theta_s, si ha che theta contenuto in theta_s per ogni s => theta contenuto in intersezione di theta_s => theta <= theta inf. implica tesi"
+            },
+            "Estremo Superiore": {
+              "title": "Estremo Superiore",
+              "description": "Estremo Superiore",
+              "message": "Se {theta_s} contenuto in TOP(X) allora la top. theta sup. avente come base B uguale {As1 inters. ... intersec. Asn} è l'estremo superiore di theta_s\ntheta_s contenuto in B contenuto in theta sup. => theta_s <= theta sup.\nSe theta app. a TOP(X) tale che theta_s <= theta per ogni s => theta_s contenuto in theta.\ntheta top. => B contenuto in theta => theta sup. contenuto in theta => theta sup. <= theta implica tesi"
             }
           }
         },

@@ -1,5 +1,6 @@
 import html
 import json
+from random import choice
 from time import sleep
 from typing import List, Tuple
 
@@ -52,7 +53,7 @@ Domanda: {question}
 Risposta:"""
     )
 
-    llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0.7)
+    llm = ChatOpenAI(model="gpt-4.1-mini", temperature=0.5)
     return prompt_template | llm.with_structured_output(MessageResponse)
 
 
@@ -61,6 +62,16 @@ def load_concept_map(json_path: str):
     """Carica la mappa concettuale dal file JSON"""
     with open(json_path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+@st.cache_data
+def get_all_leaves(concept_map) -> List[Tuple[str, List[str], str]]:
+    """Raccoglie e cachea tutte le foglie del grafo
+    
+    Returns:
+        List di tuple (titolo, percorso, messaggio)
+    """
+    return collect_all_leaves(concept_map)
 
 
 # ============================================================================
@@ -199,12 +210,31 @@ def collect_all_leaves(node, current_path: List[str] = []) -> List[Tuple[str, Li
 # ============================================================================
 
 
-def render_search_bar(concept_map):
+def format_leaf_message(title: str, content: str) -> str:
+    """Formatta il messaggio di una foglia con emoji casuali
+    
+    Args:
+        title: Il titolo della foglia
+        content: Il contenuto del messaggio
+    
+    Returns:
+        Il messaggio formattato pronto per l'invio
+    """
+    emojies = ["🚀", "✨", "📬", "💡", "🎯", "❤️"]
+    emoji = choice(emojies)
+    return f"{emoji} {title.upper()} {emoji}\n\n{content}"
+
+
+def render_search_bar(concept_map, telegram_bot_token: str = "", telegram_chat_id: str = ""):
     """Renderizza la barra di ricerca globale per le foglie"""
     st.markdown("### 🔍 Ricerca Foglie")
     
-    # Raccogli tutte le foglie
-    all_leaves = collect_all_leaves(concept_map)
+    # Raccogli tutte le foglie (cached per performance)
+    all_leaves = get_all_leaves(concept_map)
+    
+    # Rendi disponibili i token per il pulsante di invio
+    TELEGRAM_BOT_TOKEN = telegram_bot_token
+    TELEGRAM_CHAT_ID = telegram_chat_id
     
     # Campo di ricerca
     search_query = st.text_input(
@@ -216,28 +246,48 @@ def render_search_bar(concept_map):
     
     if search_query:
         # Filtra le foglie che matchano la query
-        matching_leaves = [
+        # Priorità 1: Match nel titolo
+        title_matches = [
             (title, path, message) for title, path, message in all_leaves
             if search_query.lower() in title.lower()
         ]
         
+        # Priorità 2: Match nel messaggio (escludi quelli già trovati nel titolo)
+        message_matches = [
+            (title, path, message) for title, path, message in all_leaves
+            if search_query.lower() not in title.lower() and search_query.lower() in message.lower()
+        ]
+        
+        # Combina i risultati con priorità
+        matching_leaves = title_matches + message_matches
+        
         if matching_leaves:
             st.markdown(f"**Trovate {len(matching_leaves)} foglie:**")
+            if title_matches and message_matches:
+                st.caption(f"📌 {len(title_matches)} nel titolo, 💬 {len(message_matches)} nel messaggio")
             
             # Mostra i risultati in un container scrollabile
-            for title, path, message in matching_leaves[:10]:  # Limita a 10 risultati
+            for idx, (title, path, message_content) in enumerate(matching_leaves[:10]):  # Limita a 10 risultati
                 path_str = " > ".join(path) if path else "Root"
                 
-                col1, col2 = st.columns([4, 1])
+                col1, col2, col3 = st.columns([3, 1, 1])
                 with col1:
                     st.markdown(f"**{title}**")
                     st.caption(f"📍 {path_str}")
                 with col2:
-                    if st.button("Vai →", key=f"search_{title}_{len(path)}", use_container_width=True):
+                    if st.button("Vai →", key=f"search_go_{idx}", use_container_width=True):
                         st.session_state.current_path = path
-                        st.session_state.message_sent = False
                         st.session_state.show_search = False
                         st.rerun()
+                with col3:
+                    if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID:
+                        if st.button("📤 Invia", key=f"search_send_{idx}", use_container_width=True):
+                            formatted_message = format_leaf_message(title, message_content)
+                            success, result = send_telegram_message(TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, formatted_message)
+                            if success:
+                                st.success("✅ Inviato!")
+                            else:
+                                st.error(f"❌ Errore: {result}")
                 
                 st.markdown("---")
             
@@ -337,7 +387,10 @@ def render_leaf_node(node, telegram_bot_token: str, telegram_chat_id: str):
     """Renderizza una foglia della mappa concettuale"""
     st.success("📄 Hai raggiunto una foglia della mappa concettuale!")
 
-    message = node.get("message", "Nessun messaggio disponibile")
+    title = node.get('title', '---')
+    content = node.get("message", "Nessun messaggio disponibile")
+    message = format_leaf_message(title, content)
+    
     st.markdown("### Messaggio da inviare:")
     st.code(message, language=None)
 
@@ -357,8 +410,6 @@ def render_leaf_node(node, telegram_bot_token: str, telegram_chat_id: str):
             )
             if success:
                 st.success(result_message)
-                st.balloons()
-                st.session_state.message_sent = True
             else:
                 st.error(result_message)
 
@@ -383,7 +434,6 @@ def render_category_node(children):
                     f"{icon} {display_name}", key=f"btn_{key}", use_container_width=True
                 ):
                     st.session_state.current_path.append(key)
-                    st.session_state.message_sent = False
                     st.rerun()
 
 
@@ -432,8 +482,6 @@ def main():
     # Inizializza stato sessione
     if "current_path" not in st.session_state:
         st.session_state.current_path = []
-    if "message_sent" not in st.session_state:
-        st.session_state.message_sent = False
     if "show_ai_modal" not in st.session_state:
         st.session_state.show_ai_modal = False
     if "show_search" not in st.session_state:
@@ -461,16 +509,18 @@ def main():
         st.write("")
         if st.button("🔍 Cerca", use_container_width=True):
             st.session_state.show_search = True
+            st.session_state.show_ai_modal = False
     with col_ai_button:
         st.write("")
         if st.button("🤖 Chiedi all'AI", use_container_width=True):
             st.session_state.show_ai_modal = True
+            st.session_state.show_search = False
 
     st.markdown("---")
 
     # Modal Ricerca
     if st.session_state.show_search:
-        render_search_bar(concept_map)
+        render_search_bar(concept_map, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID)
         if st.button("❌ Chiudi Ricerca", use_container_width=False):
             st.session_state.show_search = False
             st.rerun()
@@ -490,7 +540,6 @@ def main():
         with col1:
             if st.button("⬅️ Indietro"):
                 st.session_state.current_path.pop()
-                st.session_state.message_sent = False
                 st.rerun()
     else:
         st.markdown("**Percorso:** 🏠 Home")
