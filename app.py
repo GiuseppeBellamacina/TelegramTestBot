@@ -45,7 +45,7 @@ def get_llm_chain():
 dettagliate ma comprensibili. Non scrivere formule in markdown. Se il messaggio di risposta è
 troppo lungo, suddividilo in più messaggi di massimo 120 caratteri ciascuno. Non fare messaggi eccessivamente corti se
 decidi di suddividerlo e cerca di non fare più di 5 messaggi in totale (da 1 a 5 messaggi massimo). Se puoi mandare un solo messaggio fallo.
-Il topic principale delle domande riguarda la Topologia Generale, tu devi rispondere comunque a tutto.
+Il topic principale delle domande riguarda la Topologia Generale, tu devi rispondere comunque a tutto. Limitati a rispondere alla domanda e non proporre approfondimenti o altro alla fine della risposta. Non specificare che parli di Topologia Generale, rispondi solo alla domanda.
 
 Domanda: {question}
 
