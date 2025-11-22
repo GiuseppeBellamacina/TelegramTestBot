@@ -180,9 +180,81 @@ def count_leaves(node) -> int:
     return count
 
 
+def collect_all_leaves(node, current_path: List[str] = []) -> List[Tuple[str, List[str], str]]:
+    """Raccoglie tutte le foglie con i loro percorsi e titoli
+    
+    Returns:
+        List di tuple (titolo, percorso, messaggio)
+    """
+    if current_path is None:
+        current_path = []
+    
+    leaves = []
+    
+    if is_leaf(node):
+        title = node.get("title", "Senza titolo")
+        message = node.get("message", "")
+        leaves.append((title, current_path.copy(), message))
+    elif isinstance(node, dict) and "children" in node:
+        for key, child in node["children"].items():
+            leaves.extend(collect_all_leaves(child, current_path + [key]))
+    
+    return leaves
+
+
 # ============================================================================
 # UI COMPONENTS
 # ============================================================================
+
+
+def render_search_bar(concept_map):
+    """Renderizza la barra di ricerca globale per le foglie"""
+    st.markdown("### 🔍 Ricerca Foglie")
+    
+    # Raccogli tutte le foglie
+    all_leaves = collect_all_leaves(concept_map)
+    
+    # Campo di ricerca
+    search_query = st.text_input(
+        "Cerca una foglia:",
+        placeholder="Inizia a digitare per cercare...",
+        key="search_input",
+        label_visibility="collapsed"
+    )
+    
+    if search_query:
+        # Filtra le foglie che matchano la query
+        matching_leaves = [
+            (title, path, message) for title, path, message in all_leaves
+            if search_query.lower() in title.lower()
+        ]
+        
+        if matching_leaves:
+            st.markdown(f"**Trovate {len(matching_leaves)} foglie:**")
+            
+            # Mostra i risultati in un container scrollabile
+            for title, path, message in matching_leaves[:10]:  # Limita a 10 risultati
+                path_str = " > ".join(path) if path else "Root"
+                
+                col1, col2 = st.columns([4, 1])
+                with col1:
+                    st.markdown(f"**{title}**")
+                    st.caption(f"📍 {path_str}")
+                with col2:
+                    if st.button("Vai →", key=f"search_{title}_{len(path)}", use_container_width=True):
+                        st.session_state.current_path = path
+                        st.session_state.message_sent = False
+                        st.session_state.show_search = False
+                        st.rerun()
+                
+                st.markdown("---")
+            
+            if len(matching_leaves) > 10:
+                st.info(f"Mostrati i primi 10 risultati su {len(matching_leaves)}. Affina la ricerca per vedere di più.")
+        else:
+            st.warning("Nessuna foglia trovata con questo termine di ricerca.")
+    else:
+        st.info(f"💡 Ci sono {len(all_leaves)} foglie totali. Inizia a digitare per cercare.")
 
 
 def render_ai_modal(
@@ -372,6 +444,8 @@ def main():
         st.session_state.message_sent = False
     if "show_ai_modal" not in st.session_state:
         st.session_state.show_ai_modal = False
+    if "show_search" not in st.session_state:
+        st.session_state.show_search = False
 
     # Carica configurazione
     try:
@@ -388,15 +462,27 @@ def main():
     OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
 
     # Header
-    col_title, col_ai_button = st.columns([5, 1])
+    col_title, col_search_button, col_ai_button = st.columns([4, 1, 1])
     with col_title:
         st.title("🗺️ Mappa Concettuale Navigabile")
+    with col_search_button:
+        st.write("")
+        if st.button("🔍 Cerca", use_container_width=True):
+            st.session_state.show_search = True
     with col_ai_button:
         st.write("")
         if st.button("🤖 Chiedi all'AI", use_container_width=True):
             st.session_state.show_ai_modal = True
 
     st.markdown("---")
+
+    # Modal Ricerca
+    if st.session_state.show_search:
+        render_search_bar(concept_map)
+        if st.button("❌ Chiudi Ricerca", use_container_width=False):
+            st.session_state.show_search = False
+            st.rerun()
+        st.markdown("---")
 
     # Modal AI
     if st.session_state.show_ai_modal:
